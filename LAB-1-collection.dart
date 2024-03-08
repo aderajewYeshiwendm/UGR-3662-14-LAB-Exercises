@@ -1,26 +1,15 @@
+import 'dart:math';
+
 void main() {
-  // Create a list of favorite hobbies
-  List<String> hobbies = ['Reading', 'Coding', 'Music', 'Hiking'];
+  // Generate a list of random numbers
+  List<int> numbers = List.generate(20, (_) => Random().nextInt(20));
 
-  // Print the initial list of hobbies
-  print('Initial List of Hobbies: $hobbies');
+  // Print the original list of numbers
+  print('Original List of Numbers: $numbers');
 
-  // Add a new hobby to the list
-  hobbies.add('Gardening');
-  print('List after adding a hobby: $hobbies');
+  // Create a set to store unique numbers
+  Set<int> uniqueNumbers = Set.from(numbers);
 
-  // Remove a hobby from the list
-  hobbies.remove('Cooking');
-  print('List after removing a hobby: $hobbies');
-
-  // Sort the list of hobbies alphabetically
-  hobbies.sort();
-  print('List after sorting: $hobbies');
-
-  // Check if the list is empty
-  if (hobbies.isEmpty) {
-    print('The list of hobbies is empty.');
-  } else {
-    print('The list of hobbies is not empty.');
-  }
+  // Print the unique numbers
+  print('Unique Numbers: $uniqueNumbers');
 }
