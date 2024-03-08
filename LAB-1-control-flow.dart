@@ -12,20 +12,39 @@ void main() {
   //   print(i);
   // }
 
-  double a = double.parse(stdin.readLineSync()!);
-  double b = double.parse(stdin.readLineSync()!);
-  String? operation = stdin.readLineSync();
-  switch (operation) {
-    case '+':
-      print(a + b);
+  // double a = double.parse(stdin.readLineSync()!);
+  // double b = double.parse(stdin.readLineSync()!);
+  // String? operation = stdin.readLineSync();
+  // switch (operation) {
+  //   case '+':
+  //     print(a + b);
+  //     break;
+  //   case '-':
+  //     print(a - b);
+  //     break;
+  //   case '*':
+  //     print(a * b);
+  //     break;
+  //   default:
+  //     print(a / b);
+  // }
+
+  double grade = double.parse(stdin.readLineSync()!);
+  switch (grade) {
+    case > 83.0:
+      print('A');
       break;
-    case '-':
-      print(a - b);
+    case > 68:
+      print('B');
       break;
-    case '*':
-      print(a * b);
+    case > 50:
+      print('C');
+      break;
+    case > 40:
+      print('D');
       break;
     default:
-      print(a / b);
+      print('F');
+      break;
   }
 }
