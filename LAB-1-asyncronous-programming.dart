@@ -1,22 +1,44 @@
-import 'dart:async';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
-// Simulated function to load data from a database asynchronously
-Future<List<String>> loadDataFromDatabase() async {
-  // Simulate database query delay
-  await Future.delayed(Duration(seconds: 2));
+// Function to fetch weather data from the OpenWeatherMap API
+Future<Map<String, dynamic>> fetchWeatherData(
+    String apiKey, String city) async {
+  // Construct the URL for the API request
+  String apiUrl =
+      'https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apiKey&units=metric';
 
-  // Simulated data loaded from the database
-  List<String> data = ['John', 'Alice', 'Bob', 'Emma', 'David'];
+  // Send a GET request to the API
+  var response = await http.get(Uri.parse(apiUrl));
 
-  return data;
+  // Parse the JSON response
+  if (response.statusCode == 200) {
+    return json.decode(response.body);
+  } else {
+    throw Exception('Failed to fetch weather data');
+  }
 }
 
 void main() async {
-  // Start loading data from the database asynchronously
-  print('Loading data...');
-  var data = await loadDataFromDatabase();
+  // OpenWeatherMap API key (replace 'YOUR_API_KEY' with your actual API key)
+  String apiKey = 'YOUR_API_KEY';
 
-  // Data loaded successfully, print the results
-  print('Data loaded successfully:');
-  data.forEach((item) => print(item));
+  // City for which you want to fetch weather data
+  String city = 'London';
+
+  try {
+    // Fetch weather data asynchronously
+    var weatherData = await fetchWeatherData(apiKey, city);
+
+    // Extract temperature and weather condition from the response
+    double temperature = weatherData['main']['temp'];
+    String weatherCondition = weatherData['weather'][0]['main'];
+
+    // Display the current temperature and weather condition
+    print('Current Temperature: $temperature°C');
+    print('Weather Condition: $weatherCondition');
+  } catch (e) {
+    // Handle any exceptions that occur during the API request
+    print('Error: $e');
+  }
 }
