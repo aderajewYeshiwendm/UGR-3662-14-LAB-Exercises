@@ -1,15 +1,27 @@
-import 'dart:math';
-
 void main() {
-  // Generate a list of random numbers
-  List<int> numbers = List.generate(20, (_) => Random().nextInt(20));
+  // Create an empty map to store student names and their marks
+  Map<String, int> studentMarks = {};
 
-  // Print the original list of numbers
-  print('Original List of Numbers: $numbers');
+  // Add entries to the map using putIfAbsent
+  studentMarks.putIfAbsent('John', () => 85);
+  studentMarks.putIfAbsent('Alice', () => 90);
+  studentMarks.putIfAbsent('Bob', () => 75);
 
-  // Create a set to store unique numbers
-  Set<int> uniqueNumbers = Set.from(numbers);
+  // Print the map
+  print('Student Marks: $studentMarks');
 
-  // Print the unique numbers
-  print('Unique Numbers: $uniqueNumbers');
+  // Iterate over the map using forEach
+  print('\nIterating over the map:');
+  studentMarks.forEach((name, marks) {
+    print('$name: $marks');
+  });
+
+  // Check if a student name exists in the map using containsKey
+  String studentName = 'Alice';
+  if (studentMarks.containsKey(studentName)) {
+    int marks = studentMarks[studentName]!;
+    print('\n$studentName obtained $marks marks.');
+  } else {
+    print('\n$studentName is not found in the map.');
+  }
 }
