@@ -1,29 +1,22 @@
-import 'dart:io';
-import 'package:http/http.dart' as http;
+import 'dart:async';
 
-Future<void> downloadFile(String url, String savePath) async {
-  var response = await http.get(Uri.parse(url));
+// Simulated function to load data from a database asynchronously
+Future<List<String>> loadDataFromDatabase() async {
+  // Simulate database query delay
+  await Future.delayed(Duration(seconds: 2));
 
-  if (response.statusCode == 200) {
-    var file = File(savePath);
+  // Simulated data loaded from the database
+  List<String> data = ['John', 'Alice', 'Bob', 'Emma', 'David'];
 
-    await file.writeAsBytes(response.bodyBytes);
-
-    print('File downloaded successfully.');
-  } else {
-    print(
-        'Error: Failed to download file. Status code: ${response.statusCode}');
-  }
+  return data;
 }
 
 void main() async {
-  String url = 'https://example.com/file-to-download.txt';
+  // Start loading data from the database asynchronously
+  print('Loading data...');
+  var data = await loadDataFromDatabase();
 
-  String savePath = 'downloaded_file.txt';
-
-  try {
-    await downloadFile(url, savePath);
-  } catch (e) {
-    print('Error: $e');
-  }
+  // Data loaded successfully, print the results
+  print('Data loaded successfully:');
+  data.forEach((item) => print(item));
 }
