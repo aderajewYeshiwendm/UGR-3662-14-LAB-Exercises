@@ -1,27 +1,70 @@
+import 'dart:io';
+
 void main() {
-  // Create an empty map to store student names and their marks
-  Map<String, int> studentMarks = {};
+  // Create an empty map to represent the shopping cart
+  Map<String, int> shoppingCart = {};
 
-  // Add entries to the map using putIfAbsent
-  studentMarks.putIfAbsent('John', () => 85);
-  studentMarks.putIfAbsent('Alice', () => 90);
-  studentMarks.putIfAbsent('Bob', () => 75);
+  // Simulate shopping
+  addToCart(shoppingCart, 'Apples', 2);
+  addToCart(shoppingCart, 'Bananas', 3);
+  addToCart(shoppingCart, 'Oranges', 1);
 
-  // Print the map
-  print('Student Marks: $studentMarks');
+  // Display the current items in the shopping cart
+  print('Items in the shopping cart:');
+  displayCart(shoppingCart);
 
-  // Iterate over the map using forEach
-  print('\nIterating over the map:');
-  studentMarks.forEach((name, marks) {
-    print('$name: $marks');
-  });
+  // Calculate and print the total price of items in the cart
+  double totalPrice = calculateTotalPrice(shoppingCart);
+  print('Total price: \$${totalPrice.toStringAsFixed(2)}');
 
-  // Check if a student name exists in the map using containsKey
-  String studentName = 'Alice';
-  if (studentMarks.containsKey(studentName)) {
-    int marks = studentMarks[studentName]!;
-    print('\n$studentName obtained $marks marks.');
+  // Remove an item from the cart
+  removeFromCart(shoppingCart, 'Bananas');
+
+  // Display the updated items in the shopping cart
+  print('\nItems in the shopping cart after removing Bananas:');
+  displayCart(shoppingCart);
+}
+
+// Function to add an item to the shopping cart
+void addToCart(Map<String, int> cart, String productName, int quantity) {
+  if (cart.containsKey(productName)) {
+    // Increment the quantity if the product is already in the cart
+    cart[productName]! += quantity;
   } else {
-    print('\n$studentName is not found in the map.');
+    // Add the product to the cart with the specified quantity
+    cart[productName] = quantity;
   }
 }
+
+// Function to remove an item from the shopping cart
+void removeFromCart(Map<String, int> cart, String productName) {
+  if (cart.containsKey(productName)) {
+    // Remove the product from the cart
+    cart.remove(productName);
+    print('$productName removed from the cart.');
+  } else {
+    print('$productName is not in the cart.');
+  }
+}
+
+// Function to calculate the total price of items in the shopping cart
+double calculateTotalPrice(Map<String, int> cart) {
+  double totalPrice = 0;
+  // Define the prices of each product (you can replace these with actual prices)
+  Map<String, double> prices = {
+    'Apples': 1.50,
+    'Bananas': 0.75,
+    'Oranges': 2.00,
+  };
+
+  // Iterate over each item in the cart and calculate the total price
+  cart.forEach((productName, quantity) {
+    if (prices.containsKey(productName)) {
+      totalPrice += prices[productName]! * quantity;
+    }
+  });
+
+  return totalPrice;
+}
+
+// Function to display
