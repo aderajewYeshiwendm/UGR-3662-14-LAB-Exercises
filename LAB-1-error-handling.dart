@@ -1,24 +1,24 @@
-double divideNumbers(double dividend, double divisor) {
-  // Check if the divisor is zero
-  if (divisor == 0) {
-    // Throw a DivisionByZeroError if the divisor is zero
-    throw UnsupportedError('Cannot divide by zero');
-  }
-
-  // Perform the division and return the result
-  return dividend / divisor;
-}
+import 'dart:io';
 
 void main() {
-  double a = 10;
-  double b = 0;
+  // Path to the file to be read
+  String filePath = 'example.txt';
 
   try {
-    // Call the divideNumbers function and attempt division
-    double result = divideNumbers(a, b);
-    print('Result of division: $result');
+    // Read the contents of the file
+    File file = File(filePath);
+    String contents = file.readAsStringSync();
+
+    // Print the contents of the file
+    print('File Contents:');
+    print(contents);
   } catch (e) {
-    // Handle DivisionByZeroError if it occurs
-    print('Error: ${e.toString()}');
+    // Handle FileSystemException if the file cannot be read
+    if (e is FileSystemException) {
+      print('Error: ${e.message}');
+    } else {
+      // Handle other exceptions
+      print('Error: Failed to read the file');
+    }
   }
 }
