@@ -6,6 +6,9 @@ void main() {
   person.Name;
   person.Name = 'yesho';
   person.Name;
+  var student = Student(marks: [1, 2, 3], rollNumber: 7);
+  print(student.average(student.marks));
+  print(student.total(student.marks));
 }
 
 class Person {
@@ -18,13 +21,40 @@ class Person {
     name = value;
   }
 
-  int? get Age => age;
+  void get Age => print(age);
   set Age(value) {
     age = value;
   }
 
-  String? get Address => address;
+  void get Address => print(address);
   set Address(value) {
     address = value;
+  }
+}
+
+class Student extends Person {
+  int rollNumber;
+  List<double> marks;
+  Student(
+      {required this.marks,
+      required this.rollNumber,
+      String? name,
+      int? age,
+      String? address})
+      : super();
+  total(marks) {
+    double sum = 0;
+    for (int i = 0; i < marks.length; i++) {
+      sum += marks[i];
+    }
+    return sum;
+  }
+
+  average(marks) {
+    double sum = 0;
+    for (int i = 0; i < marks.length; i++) {
+      sum += marks[i];
+    }
+    return sum / marks.length;
   }
 }
