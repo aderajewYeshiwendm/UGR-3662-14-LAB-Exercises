@@ -1,23 +1,29 @@
-import 'dart:async';
-import 'dart:math';
+import 'dart:io';
+import 'package:http/http.dart' as http;
 
-Future<String> fetchRandomQuote() async {
-  await Future.delayed(Duration(seconds: 3));
+Future<void> downloadFile(String url, String savePath) async {
+  var response = await http.get(Uri.parse(url));
 
-  List<String> quotes = [
-    "The greatest glory in living lies not in never falling, but in rising every time we fall. - Nelson Mandela",
-    "The way to get started is to quit talking and begin doing. - Walt Disney",
-    "Your time is limited, don't waste it living someone else's life. - Steve Jobs",
-    "If life were predictable it would cease to be life, and be without flavor. - Eleanor Roosevelt",
-    "Life is what happens when you're busy making other plans. - John Lennon",
-  ];
+  if (response.statusCode == 200) {
+    var file = File(savePath);
 
-  int randomIndex = Random().nextInt(quotes.length);
-  return quotes[randomIndex];
+    await file.writeAsBytes(response.bodyBytes);
+
+    print('File downloaded successfully.');
+  } else {
+    print(
+        'Error: Failed to download file. Status code: ${response.statusCode}');
+  }
 }
 
 void main() async {
-  String quote = await fetchRandomQuote();
+  String url = 'https://example.com/file-to-download.txt';
 
-  print("Random Quote: $quote");
+  String savePath = 'downloaded_file.txt';
+
+  try {
+    await downloadFile(url, savePath);
+  } catch (e) {
+    print('Error: $e');
+  }
 }
