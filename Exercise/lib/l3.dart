@@ -18,14 +18,16 @@ class App3 extends StatelessWidget {
               },
             ),
           ),
-          body: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              _buildOrderStatus(),
-              _buildOrderDetails(),
-              _buildShippingInformation(),
-              _buildPaymentInformation(),
-            ],
+          body: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _buildOrderStatus(),
+                _buildOrderDetails(),
+                _buildShippingInformation(),
+                _buildPaymentInformation(),
+              ],
+            ),
           ),
         ),
       ),
