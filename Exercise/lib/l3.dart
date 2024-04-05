@@ -6,13 +6,14 @@ class App3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Directionality(
         textDirection: TextDirection.ltr,
         child: Scaffold(
           appBar: AppBar(
             title: const Text('Order Details'),
             leading: IconButton(
-              icon: Icon(Icons.arrow_back),
+              icon: const Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.pop(context);
               },
@@ -61,7 +62,7 @@ class App3 extends StatelessWidget {
       child: ListTile(
         leading: Icon(Icons.check_circle),
         title: Text('Completed'),
-        subtitle: Text('Completed on March 29th'),
+        subtitle: Text('Order Completed on March 29th'),
         trailing: Icon(Icons.navigate_next),
       ),
     );
@@ -126,8 +127,8 @@ class App3 extends StatelessWidget {
   Widget _buildPurchasedItemsTitle() {
     return Container(
       alignment: Alignment.centerLeft,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
+      child: const Padding(
+        padding: EdgeInsets.all(8.0),
         child: Text(
           'Purchased Items',
           style: TextStyle(
@@ -151,6 +152,7 @@ class App3 extends StatelessWidget {
       leading: Image.asset(imagePath),
       title: RichText(
         text: TextSpan(
+          style: TextStyle(color: Colors.black),
           children: [
             TextSpan(
               text: '$itemName\n',
@@ -169,6 +171,7 @@ class App3 extends StatelessWidget {
       ),
       trailing: RichText(
         text: TextSpan(
+          style: TextStyle(color: Colors.black),
           children: [
             TextSpan(text: 'Color: $itemColor\n'),
             TextSpan(text: 'Qty: $itemQuantity'),
