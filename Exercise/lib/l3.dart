@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class App3 extends StatelessWidget {
+  const App3({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,235 +11,237 @@ class MyApp extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             title: const Text('Order details'),
-            leading: const Icon(Icons.arrow_back),
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
           ),
           body: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.green[200],
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: const ListTile(
-                            leading: Icon(Icons.check_circle),
-                            title: Text('Completed'),
-                            subtitle: Text('completed on march 29th'),
-                            trailing: Icon(Icons.navigate_next),
-                          ),
-                        ),
-                        Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
-                              bottom:
-                                  BorderSide(color: Colors.black12, width: 2.0),
-                            ),
-                          ),
-                          child: const ListTile(
-                            leading: Text('Order ID'),
-                            trailing: Text(
-                              '#521420',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                        const ListTile(
-                          leading: Text('Order Date'),
-                          trailing: Text(
-                            '20 july 2024',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Directionality(
-                          textDirection: TextDirection.ltr,
-                          child: Container(
-                            alignment: Alignment.centerLeft,
-                            child: const Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: Text(
-                                'Purchased Items',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16),
-                              ),
-                            ),
-                          ),
-                        ),
-                        ListTile(
-                          leading: Image.asset('../assets/img1.jpeg'),
-                          title: RichText(
-                            text: const TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: 'Blue T-Shirt\n',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                                TextSpan(
-                                  text: 'Size: L\n',
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.normal),
-                                ),
-                                TextSpan(
-                                  text: '50.00',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                          ),
-                          trailing: RichText(
-                            text: const TextSpan(children: [
-                              TextSpan(text: 'Color:'),
-                              TextSpan(text: ' Yellow\n'),
-                              TextSpan(text: 'Qty:'),
-                              TextSpan(text: ' 1'),
-                            ]),
-                          ),
-                        ),
-                        ListTile(
-                          leading: Image.asset('../assets/img1.jpeg'),
-                          title: RichText(
-                            text: const TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: 'Blue T-Shirt\n',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                                TextSpan(
-                                  text: 'Size: L\n',
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.normal),
-                                ),
-                                TextSpan(
-                                  text: 'ETB 50.00',
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                              ],
-                            ),
-                          ),
-                          trailing: RichText(
-                            text: const TextSpan(children: [
-                              TextSpan(text: 'Color:'),
-                              TextSpan(text: ' Yellow\n'),
-                              TextSpan(text: 'Qty:'),
-                              TextSpan(text: ' 1'),
-                            ]),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: Card(
-                  child: Column(
-                    children: [
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        child: const Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Text(
-                            'Shipping Information',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16),
-                          ),
-                        ),
-                      ),
-                      const ListTile(
-                        leading: Text(
-                          'name',
-                          style: TextStyle(
-                            fontSize: 14,
-                          ),
-                        ),
-                        trailing: Text(
-                          'Jacob Jones',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
-                      const ListTile(
-                        leading: Text(
-                          'phone nubmer',
-                          style: TextStyle(
-                            fontSize: 14,
-                          ),
-                        ),
-                        trailing: Text(
-                          '1234556',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
-                      const ListTile(
-                        leading: Text(
-                          'address',
-                          style: TextStyle(
-                            fontSize: 14,
-                          ),
-                        ),
-                        trailing: Text(
-                          'abcd',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 14),
-                        ),
-                      ),
-                      const ListTile(
-                        leading: Text('shipment'),
-                        trailing: Text(
-                          'Economy',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              const Padding(
-                  padding: EdgeInsets.all(20),
-                  child: Card(
-                    child: Column(
-                      children: [
-                        Text('Payment Information'),
-                        ListTile(
-                          leading: Text('Payment method'),
-                          trailing: Text('Cash on delivary'),
-                        )
-                      ],
-                    ),
-                  )),
+              _buildOrderStatus(),
+              _buildOrderDetails(),
+              _buildShippingInformation(),
+              _buildPaymentInformation(),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildOrderStatus() {
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              _buildOrderStatusTile(),
+              _buildOrderIDTile(),
+              _buildOrderDateTile(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildOrderStatusTile() {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.green[200],
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: ListTile(
+        leading: Icon(Icons.check_circle),
+        title: Text('Completed'),
+        subtitle: Text('completed on March 29th'),
+        trailing: Icon(Icons.navigate_next),
+      ),
+    );
+  }
+
+  Widget _buildOrderIDTile() {
+    return ListTile(
+      leading: Text('Order ID'),
+      trailing: Text(
+        '#521420',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildOrderDateTile() {
+    return ListTile(
+      leading: Text('Order Date'),
+      trailing: Text(
+        '20 July 2024',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildOrderDetails() {
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              _buildPurchasedItemsTitle(),
+              _buildPurchasedItem(
+                imagePath: 'assets/images/gomoon.jpeg',
+                itemName: 'Blue T-Shirt',
+                itemSize: 'Size: L',
+                itemPrice: '50.00',
+                itemColor: 'Yellow',
+                itemQuantity: '1',
+              ),
+              _buildPurchasedItem(
+                imagePath: 'assets/images/gomoon.jpeg',
+                itemName: 'Blue T-Shirt',
+                itemSize: 'Size: L',
+                itemPrice: 'ETB 50.00',
+                itemColor: 'Yellow',
+                itemQuantity: '1',
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPurchasedItemsTitle() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          'Purchased Items',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPurchasedItem({
+    required String imagePath,
+    required String itemName,
+    required String itemSize,
+    required String itemPrice,
+    required String itemColor,
+    required String itemQuantity,
+  }) {
+    return ListTile(
+      leading: Image.asset(imagePath),
+      title: RichText(
+        text: TextSpan(
+          children: [
+            TextSpan(
+              text: '$itemName\n',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            TextSpan(
+              text: '$itemSize\n',
+              style: TextStyle(fontWeight: FontWeight.normal),
+            ),
+            TextSpan(
+              text: '$itemPrice',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+      ),
+      trailing: RichText(
+        text: TextSpan(
+          children: [
+            TextSpan(text: 'Color: $itemColor\n'),
+            TextSpan(text: 'Qty: $itemQuantity'),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildShippingInformation() {
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Card(
+        child: Column(
+          children: [
+            _buildShippingInformationTitle(),
+            _buildShippingInfoTile(title: 'Name', value: 'Jacob Jones'),
+            _buildShippingInfoTile(title: 'Phone Number', value: '1234556'),
+            _buildShippingInfoTile(title: 'Address', value: 'abcd'),
+            _buildShippingInfoTile(title: 'Shipment', value: 'Economy'),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildShippingInformationTitle() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(
+          'Shipping Information',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildShippingInfoTile({
+    required String title,
+    required String value,
+  }) {
+    return ListTile(
+      leading: Text(
+        title,
+        style: TextStyle(
+          fontSize: 14,
+        ),
+      ),
+      trailing: Text(
+        value,
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 14,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPaymentInformation() {
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Card(
+        child: Column(
+          children: [
+            Text('Payment Information'),
+            ListTile(
+              leading: Text('Payment method'),
+              trailing: Text('Cash on Delivery'),
+            )
+          ],
         ),
       ),
     );

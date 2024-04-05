@@ -20,7 +20,7 @@ class LAB1 extends StatelessWidget {
 
       // home: const HomePage(),
       // home: HomePage2(),
-      home: MyApp(),
+      home: App3(),
     );
   }
 }
