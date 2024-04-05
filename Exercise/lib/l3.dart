@@ -10,7 +10,7 @@ class App3 extends StatelessWidget {
         textDirection: TextDirection.ltr,
         child: Scaffold(
           appBar: AppBar(
-            title: const Text('Order details'),
+            title: const Text('Order Details'),
             leading: IconButton(
               icon: Icon(Icons.arrow_back),
               onPressed: () {
@@ -61,7 +61,7 @@ class App3 extends StatelessWidget {
       child: ListTile(
         leading: Icon(Icons.check_circle),
         title: Text('Completed'),
-        subtitle: Text('completed on March 29th'),
+        subtitle: Text('Completed on March 29th'),
         trailing: Icon(Icons.navigate_next),
       ),
     );
@@ -240,7 +240,7 @@ class App3 extends StatelessWidget {
           children: [
             Text('Payment Information'),
             ListTile(
-              leading: Text('Payment method'),
+              leading: Text('Payment Method'),
               trailing: Text('Cash on Delivery'),
             )
           ],
